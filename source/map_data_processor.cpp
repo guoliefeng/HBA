@@ -200,7 +200,18 @@ bool MapDataProcessor::isPcdEmpty(const std::string& path)
     appendSummary("[WARN] failed to load pcd, treat as empty: " + path);
     return true;
   }
-  return cloud.empty();
+  if(cloud.empty())
+    return true;
+
+  if(cloud.size() == 1)
+  {
+    const auto& p = cloud.points.front();
+    const float eps = 1e-6f;
+    if(std::abs(p.x) < eps && std::abs(p.y) < eps && std::abs(p.z) < eps)
+      return true;
+  }
+
+  return false;
 }
 
 bool MapDataProcessor::buildAlignedOutput(

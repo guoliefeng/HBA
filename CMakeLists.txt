@@ -52,3 +52,15 @@ target_link_libraries(visualize_map ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 add_executable(map_preprocess source/map_data_processor.cpp)
 target_link_libraries(map_preprocess ${PCL_LIBRARIES} Boost::filesystem Boost::system)
+
+add_executable(merge_pcd source/merge_pcd.cpp)
+target_link_libraries(merge_pcd ${PCL_LIBRARIES} Boost::filesystem Boost::system)
+
+add_executable(loop_optimize source/loop_optimize.cpp)
+target_link_libraries(loop_optimize ${catkin_LIBRARIES} ${PCL_LIBRARIES} gtsam)
+
+add_executable(track_align source/track_align.cpp)
+target_link_libraries(track_align ${PCL_LIBRARIES})
+
+add_executable(gps_optimize source/gps_optimize.cpp)
+target_link_libraries(gps_optimize gtsam)
