@@ -64,3 +64,6 @@ target_link_libraries(track_align ${PCL_LIBRARIES})
 
 add_executable(gps_optimize source/gps_optimize.cpp)
 target_link_libraries(gps_optimize gtsam)
+
+add_executable(rebuild_map_no_crop source/rebuild_map_no_crop.cpp)
+target_link_libraries(rebuild_map_no_crop ${PCL_LIBRARIES})
